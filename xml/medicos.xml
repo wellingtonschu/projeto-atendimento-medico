@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Medicos><titulo>Cadastro de Medicos</titulo><data>26/10/2015 21:14:57</data><medico codigo="1"><nome>Rodrigo Curvello</nome><fone>4321-1234</fone></medico></Medicos>
+<Medicos>
+	<titulo>Cadastro de Medicos</titulo>
+	<data>26/10/2015 21:14:57</data>
+	<medico codigo="1">
+		<nome>Rodrigo Curvello</nome>
+		<fone>4321-1234</fone>
+	</medico>
+	<medico codigo="2">
+		<nome>Rodrigo Becker Probst</nome>
+		<fone>8865-1874</fone>
+	</medico>
+	<medico codigo="3">
+		<nome>Alex Coelho</nome>
+		<fone>1111-2222</fone>
+	</medico>
+</Medicos>
