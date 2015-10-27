@@ -11,6 +11,9 @@ public class ListAtendimentos {
 	List<Atendimentos> lista = new ArrayList<Atendimentos>();
 	Menus menu = new Menus();
 	
+	ListPacientes listaPac = new ListPacientes(ManipXML.PaclerXMLCOM());
+	ListMedicos listaMed = new ListMedicos(ManipXML.MedlerXMLCOM());
+	
 	public ListAtendimentos(List<Atendimentos> list) {
 		lista = list;
 	}
@@ -34,10 +37,20 @@ public class ListAtendimentos {
 		for (int i = 0; i < lista.size(); i++) {
 			builder.append(lista.get(i).getCodigo());
 			builder.append(" - ");
-			builder.append("Código do Médico: ");
-			builder.append(lista.get(i).getCodigoMedico());
-			builder.append(" | Código do Paciente: ");
-			builder.append(lista.get(i).getCodigoPaciente());
+			builder.append("Nome do Médico: ");
+			for (int j = 0; j < lista.size(); j++) {
+				for (int j2 = 0; j2 < listaMed.lista.size(); j2++) {
+					if(listaMed.lista.get(j2).getCodigo() == lista.get(j).getCodigoMedico())
+						builder.append(listaMed.lista.get(j2).getNome());
+				}
+			}
+			builder.append(" | Nome do Paciente: ");
+			for (int j = 0; j < lista.size(); j++) {
+				for (int j2 = 0; j2 < listaMed.lista.size(); j2++) {
+					if(listaPac.lista.get(j2).getCodigo() == lista.get(j).getCodigoPaciente())
+						builder.append(listaPac.lista.get(j2).getNome());
+				}
+			}
 			builder.append("\n");
 		}
 		return builder;
