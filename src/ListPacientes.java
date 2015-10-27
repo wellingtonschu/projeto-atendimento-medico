@@ -15,100 +15,75 @@ public class ListPacientes {
 		lista = list;
 	}
 	
-	public void geraHTML(){
-		FileWriter arq;
-		try {
-			arq = new FileWriter("html/index.html");
-			PrintWriter gravarArq = new PrintWriter(arq); 
-			gravarArq.append("<!DOCTYPE html>");
-			gravarArq.append("<html lang='en'>");
-			gravarArq.append("<head>");
-			gravarArq.append("	<meta charset='UTF-8'>");
-			gravarArq.append("	<title>XML - Exercício LP1</title>");
-			gravarArq.append("	 <!-- Bootstrap -->");
-			gravarArq.append("    <link href='css/bootstrap.min.css' rel='stylesheet'>");
-			gravarArq.append("    <link rel='stylesheet' href='css/estilo.css'>");
-			gravarArq.append("</head>");
-			gravarArq.append("<body>");
-			gravarArq.append("    <div class='col-md-10 col-md-offset-1'>");
-			gravarArq.append("    	<div class='jumbotron'>");
-			gravarArq.append("    		<h1>XML - Exercício LP1</h1>");
-			gravarArq.append("    	</div>");
-			gravarArq.append("    	");
-			gravarArq.append("    	<div class='row tabela-topo'>");
-			gravarArq.append("	    	<div class='col-md-2'>");
-			gravarArq.append("	    		<p class='titulo'>Código</p>");
-			gravarArq.append("	    	</div>");
-			gravarArq.append("	    	<div class='col-md-4'>");
-			gravarArq.append("	    		<p class='titulo'>Nome</p>");
-			gravarArq.append("	    	</div>");
-			gravarArq.append("	    	<div class='col-md-3'>");
-			gravarArq.append("	    		<p class='titulo'>E-mail</p>");
-			gravarArq.append("	    	</div>");
-			gravarArq.append("	    	<div class='col-md-3'>");
-			gravarArq.append("	    		<p class='titulo'>Fone</p>");
-			gravarArq.append("	    	</div>");
-			gravarArq.append("    	</div>");
-			gravarArq.append("");
-			gravarArq.append("    	");
-			for (int i = 0; i < lista.size(); i++){
-				if(i < lista.size() -1)
-					gravarArq.append("    	<div class='row tabela-meio'>");
-				else
-					gravarArq.append("    	<div class='row tabela-fim'>");
-			gravarArq.append("	    	<div class='col-md-2'>");
-			gravarArq.append("	    		<p class='conteudo'>");
-			
-			//imprime os códigos dos pacientes
-			gravarArq.append(String.valueOf(lista.get(i).getCodigo()));
-			gravarArq.append("</p>");
-			
-			
-			gravarArq.append("	    	</div>");
-			gravarArq.append("	    	<div class='col-md-4'>");
-			gravarArq.append("	    		<p class='conteudo'>");
-			
-			//imprime os nomes dos pacientes
-			gravarArq.append(lista.get(i).getNome());
-			gravarArq.append("</p>");
-			
-			
-			gravarArq.append("	    	</div>");
-			gravarArq.append("	    	<div class='col-md-3'>");
-			gravarArq.append("	    		<p class='conteudo'>");
-			
-			//imprime os fones dos pacientes
-			gravarArq.append(lista.get(i).getFone());
-			gravarArq.append("</p>");
-
-			
-			gravarArq.append("	    	</div>");
-			gravarArq.append("    	</div>");
-			gravarArq.append("");
+	public void inserir(Pacientes cli){
+		int verifica = 0;
+		if(verifica_duplicidade(cli.getNome())){
+			for(int x = 0; x < lista.size() ; x++){
+				if(cli.getClassificacao().equals("Vermelho")){
+					if(lista.get(x).getClassificacao().equals("Amarelo")){
+						fazTudo(cli, x);
+						verifica = 1;
+						break;
+					}
+					if(lista.get(x).getClassificacao().equals("Verde")){
+						fazTudo(cli, x);
+						verifica = 1;
+						break;
+					}
+					if(lista.get(x).getClassificacao().equals("Azul")){
+						fazTudo(cli, x);
+						verifica = 1;
+						break;
+					}
+				}
+				if(cli.getClassificacao().equals("Amarelo")){
+					if(lista.get(x).getClassificacao().equals("Verde")){
+						fazTudo(cli, x);
+						verifica = 1;
+						break;
+					}
+					if(lista.get(x).getClassificacao().equals("Azul")){
+						fazTudo(cli, x);
+						verifica = 1;
+						break;
+					}
+				}
+				if(cli.getClassificacao().equals("Verde"))
+					if(lista.get(x).getClassificacao().equals("Azul")){
+						fazTudo(cli, x);
+						verifica = 1;
+						break;
+					}
 			}
-			gravarArq.append("");
-			gravarArq.append("    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->");
-			gravarArq.append("    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>");
-			gravarArq.append("    <!-- Include all compiled plugins (below), or include individual files as needed -->");
-			gravarArq.append("    <script src='js/bootstrap.min.js'></script>");
-			gravarArq.append("	");
-			gravarArq.append("</body>");
-			gravarArq.append("</html>");
-			arq.close();
-			
-			File file = new File("html/index.html");
-			Desktop.getDesktop().edit(file);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+			if(verifica == 0)
+				lista.add(cli);
+		}
 		
 	}
 	
-	public void inserir(Pacientes cli){
-		if(verifica_duplicidade(cli.getNome()))
-			lista.add(cli);
+	public void fazTudo(Pacientes cli, int x){
+		Pacientes pac = new Pacientes();
+		pac.setCodigo(lista.get(lista.size()-1).getCodigo());
+		pac.setNome(lista.get(lista.size()-1).getNome());
+		pac.setFone(lista.get(lista.size()-1).getFone());
+		pac.setClassificacao(lista.get(lista.size()-1).getClassificacao());
+		lista.add(pac);
+		alteraRapido(x);
+		lista.get(x).setCodigo(cli.getCodigo());
+		lista.get(x).setNome(cli.getNome());
+		lista.get(x).setFone(cli.getFone());
+		lista.get(x).setClassificacao(cli.getClassificacao());
 	}
+	public void alteraRapido(int ponto_de_parada){
+		
+		for (int i = lista.size()-1; i > ponto_de_parada; i--) {
+			lista.get(i).setCodigo(lista.get(i-1).getCodigo());
+			lista.get(i).setNome(lista.get(i-1).getNome());
+			lista.get(i).setFone(lista.get(i-1).getFone());
+			lista.get(i).setClassificacao(lista.get(i-1).getClassificacao());
+		}
+	}
+	
 	
 	public StringBuilder nomeIgual(String texto){
 		StringBuilder builder = new StringBuilder();
@@ -149,6 +124,7 @@ public class ListPacientes {
 		return true;
 	}
 	
+	
 	public void alterar(int cod_paciente, int escolha_alteracao, String novo_valor){
 		int verifica_paciente = 0;
 		for (int i = 0; i < lista.size(); i++) {
@@ -188,6 +164,8 @@ public class ListPacientes {
 			builder.append(lista.get(i).getNome());
 			builder.append(" | Fone: ");
 			builder.append(lista.get(i).getFone());
+			builder.append(" | Classificação: ");
+			builder.append(lista.get(i).getClassificacao());
 			builder.append("\n");
 		}
 		return builder;
@@ -228,6 +206,8 @@ public class ListPacientes {
 			builder.append(lista.get(verifica_paciente).getNome());
 			builder.append(" | Fone: ");
 			builder.append(lista.get(verifica_paciente).getFone());
+			builder.append(" | Classificação: ");
+			builder.append(lista.get(verifica_paciente).getClassificacao());
 			builder.append("\n");
 		}else
 			builder.append("Valor Não Encontrado, favor tentar novamente..");

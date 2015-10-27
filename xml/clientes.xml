@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Clientes><titulo>Cadastro de Clientes</titulo><data>17/09/2015 12:34:36</data><cliente codigo="123"><nome>Rodrigo Curvello</nome><email>rodrigo@curvello.com</email><fone>1234-4321</fone></cliente><cliente codigo="321"><nome>Rodrigo Becker Probst</nome><email>12@curvello.com</email><fone>9999-4321</fone></cliente><cliente codigo="1"><nome>Michael Jackson</nome><email>mj@gmail.com</email><fone>8888-8989</fone></cliente><cliente codigo="2"><nome>Jason Krueger</nome><email>jason_assassin@hotmail.com</email><fone>6969-6969</fone></cliente></Clientes>
+<Medicos><titulo>Cadastro de Medicos</titulo><data>27/10/2015 4:02:47</data><medico codigo="1"><nome>Rodrigo Curvello</nome><fone>4321-1234</fone></medico></Medicos>

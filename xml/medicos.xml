@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Medicos><titulo>Cadastro de Medicos</titulo><data>26/10/2015 21:14:57</data><medicos codigo="123"><nome>Rodrigo Curvello</nome><fone>1234-4321</fone></medicos></Medicos>
+<Medicos><titulo>Cadastro de Medicos</titulo><data>26/10/2015 21:14:57</data><medico codigo="1"><nome>Rodrigo Curvello</nome><fone>4321-1234</fone></medico></Medicos>

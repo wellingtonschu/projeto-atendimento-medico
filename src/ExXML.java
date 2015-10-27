@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class ExXML {
@@ -8,168 +5,112 @@ public class ExXML {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		Menus menu = new Menus();
-		ListClientes lista = new ListClientes(ManipXML.lerXMLCOM());
-		Clientes cli = new Clientes();
+		ListAtendimentos listaAte = new ListAtendimentos(ManipXML.AtelerXMLCOM());
+		ListPacientes listaPac = new ListPacientes(ManipXML.PaclerXMLCOM());
+		ListMedicos listaMed = new ListMedicos(ManipXML.MedlerXMLCOM());
+		Atendimentos ate = new Atendimentos();
+		Pacientes pac = new Pacientes();
+		Medicos med = new Medicos();
 		int escolha = 0;
-		int opcao_alterar = 0;
-		int cod_cliente = 0;
 		do{
 			System.out.println(menu.imprimeMenu("MENU"));
-			System.out.println("1 - Cadastrar Novo Cliente");
-			System.out.println("2 - Consultar Cliente");	
-			System.out.println("3 - Listar Todos os Clientes");
-			System.out.println("4 - Alterar Cliente");
-			System.out.println("5 - Excluir Cliente");
-			System.out.println("6 - Retornar Clientes com mesmo Nome");
-			System.out.println("7 - Retornar Clientes com mesmo Sobrenome");
-			System.out.println("8 - Retornar Clientes com mesmo Domínio");
+			System.out.println("1 - Realizar Atendimento");
+			System.out.println("2 - Cadastrar novo Paciente");
+			System.out.println("3 - Cadastrar novo Médico");
+			System.out.println("4 - Mostrar Tudo");
 			System.out.println("0 - Sair do Programa");
 			System.out.print("\nValor escolhido: ");
 			escolha = in.nextInt();
 			
 			switch (escolha) {
 			case 1:
-				cli = new Clientes();
-				System.out.println(menu.imprimeMenu("Cadastro de Cliente"));
-				System.out.print("Código: ");
-				cli.setCodigo(in.nextInt());
-				in.nextLine();
-				System.out.print("Nome: ");
-				cli.setNome(in.nextLine());
-				System.out.print("E-mail: ");
-				cli.setEmail(in.nextLine());
-				System.out.print("Telefone: ");
-				cli.setFone(in.nextLine());
-				lista.inserir(cli);
+				int medico =0;
+				ate = new Atendimentos();
+				System.out.println(menu.imprimeMenu("REALIZAR ATENDIMENTO"));
+
+				System.out.println("A seguir será mostrado os médicos cadastrados\nPressione enter para continuar...");
+				in.nextLine();in.nextLine();
+				System.out.println(listaMed.imprimir());
+				System.out.print("\nDigite o código do Médico que realizará o atendimento: ");
+				medico = in.nextInt();
+				System.out.println(menu.imprimeMenu("ATENDIMENTO REALIZADO"));
+				System.out.println("O paciente " + listaPac.lista.get(0).getNome() + " foi atendido pelo médico " + listaMed.consultar(medico));
+				System.out.print("Digite o Código do Atendimento: ");
+				ate.setCodigo(in.nextInt());
+				ate.setCodigoMedico(medico);
+				ate.setCodigoPaciente(listaPac.lista.get(0).getCodigo());
+				listaAte.inserir(ate);
+				listaPac.deletar(listaPac.lista.get(0).getCodigo());
 				break;
 			case 2:
-				System.out.println(menu.imprimeMenu("Clientes Cadastrados"));
-				System.out.println(lista.imprimir());
-				System.out.println("Pressione enter para continuar...");
-				in.nextLine();in.nextLine();
-				System.out.println(menu.imprimeMenu("Atributo a ser Pesquisado"));
-				System.out.println("1 - Buscar Código");
-				System.out.println("2 - Buscar Nome");
-				System.out.println("3 - Buscar E-mail");
-				System.out.println("4 - Buscar Telefone");
-				System.out.print("\nValor escolhido: ");
-				opcao_alterar = in.nextInt();
+				pac = new Pacientes();
+				int q1 = 0;
+				int q2 = 0;
+				int q3 = 0;
+				int q4 = 0;
+				System.out.println(menu.imprimeMenu("CADASTRAR NOVO PACIENTE"));
+				System.out.print("Código: ");
+				pac.setCodigo(in.nextInt());
 				in.nextLine();
+				System.out.print("Nome: ");
+				pac.setNome(in.nextLine());
+				System.out.print("Telefone: ");
+				pac.setFone(in.nextLine());
 				
-				switch (opcao_alterar) {
-				case 1:
-					System.out.print("Digite o Código: ");
-					break;
-				case 2:
-					System.out.print("Digite o Nome: ");
-					break;
-				case 3:
-					System.out.print("Digite o E-mail: ");
-					break;
-				case 4:
-					System.out.print("Digite o Fone: ");
-					break;
-				default:
-					
-					break;
-				}
-				System.out.println(lista.consultar(opcao_alterar, in.nextLine()));
-				System.out.println("Pressione enter para continuar...");
-				in.nextLine();
+				System.out.print("Há alguma Fratura? (1 - Sim, 0 - Não)\nR: ");
+				q1 = in.nextInt();
+				System.out.print("Há alguma Hemorragia? (1 - Sim, 0 - Não)\nR: ");
+				q2 = in.nextInt();
+				System.out.print("Há alguma Queimadura? (1 - Sim, 0 - Não)\nR: ");
+				q3 = in.nextInt();
+				System.out.print("Houve Desmaio? (1 - Sim, 0 - Não)\nR: ");
+				q4 = in.nextInt();
+				System.out.println((q1+q2+q3+q4));
+				if((q1 + q2 + q3 + q4) == 4)
+					pac.setClassificacao("Vermelho");
+				if((q1 + q2 + q3 + q4) == 3)
+					pac.setClassificacao("Amarelo");
+				if((q1 + q2 + q3 + q4) == 1 || (q1 + q2 + q3 + q4) == 2)
+					pac.setClassificacao("Verde");
+				if((q1 + q2 + q3 + q4) == 0)
+					pac.setClassificacao("Azul");
+				
+				listaPac.inserir(pac);
+				
+				
 				break;
 			case 3:
-				System.out.println(lista.imprimir());
-				System.out.println("Pressione enter para continuar...");
+				med = new Medicos();
+				System.out.println(menu.imprimeMenu("CADASTRAR NOVO MÉDICO"));
+				System.out.print("Código: ");
+				med.setCodigo(in.nextInt());
 				in.nextLine();
-				in.nextLine();
+				System.out.print("Nome: ");
+				med.setNome(in.nextLine());
+				System.out.print("Telefone: ");
+				med.setFone(in.nextLine());
+				listaMed.inserir(med);
 				break;
 			case 4:
-				System.out.println(menu.imprimeMenu("Alteração de Cliente"));
-				System.out.println("\nQual Cliente Deseja Alterar? ");
-				System.out.println(lista.imprimir());
-				System.out.print("Código escolhido: ");
-				cod_cliente = in.nextInt();
-				
-				
-				System.out.println(menu.imprimeMenu("Atributo a ser Alterado"));
-				System.out.println("1 - Alterar Código");
-				System.out.println("2 - Alterar Nome");
-				System.out.println("3 - Alterar E-mail");
-				System.out.println("4 - Alterar Telefone");
-				System.out.print("\nValor escolhido: ");
-				opcao_alterar = in.nextInt();
+				System.out.println(listaAte.imprimir());
+				System.out.println("Pressione enter para continuar...");
+				in.nextLine();in.nextLine();
+				System.out.println(listaMed.imprimir());
+				System.out.println("Pressione enter para continuar...");
 				in.nextLine();
-				
-				switch (opcao_alterar) {
-				case 1:
-					System.out.print("Digite o novo Código: ");
-					lista.alterar(cod_cliente, opcao_alterar, in.nextLine());
-					break;
-				case 2:
-					System.out.print("Digite o novo Nome: ");
-					lista.alterar(cod_cliente, opcao_alterar, in.nextLine());
-					break;
-				case 3:
-					System.out.print("Digite o novo E-mail: ");
-					lista.alterar(cod_cliente, opcao_alterar, in.nextLine());
-					break;
-				case 4:
-					System.out.print("Digite o novo Fone: ");
-					lista.alterar(cod_cliente, opcao_alterar, in.nextLine());
-					break;
-				default:
-					break;
-				}
-				break;
-			case 5:
-				System.out.println(menu.imprimeMenu("Excluir Cliente"));
-				System.out.println("\nQual Cliente Deseja Excluir? ");
-				System.out.println(lista.imprimir());
-				System.out.print("Código escolhido: ");
-				cod_cliente = in.nextInt();
-				lista.deletar(cod_cliente);
-				break;
-			case 6:
-				in.nextLine();
-				System.out.println(menu.imprimeMenu("Listar Nomes Iguais"));
-				System.out.print("\nDigite o nome que deseja buscar: ");
-				System.out.println(lista.nomeIgual(in.nextLine()));
+				System.out.println(listaPac.imprimir());
 				System.out.println("Pressione enter para continuar...");
 				in.nextLine();
 				break;
-			case 7:
-				in.nextLine();
-				System.out.println(menu.imprimeMenu("Listar Sobrenomes Iguais"));
-				System.out.print("\nDigite o sobrenome que deseja buscar: ");
-				System.out.println(lista.sobrenomeIgual(in.nextLine()));
-				System.out.println("Pressione enter para continuar...");
-				in.nextLine();
-				break;
-			case 8:
-				in.nextLine();
-				System.out.println(menu.imprimeMenu("Listar Domínios Iguais"));
-				System.out.print("\nDigite o domínio que deseja buscar: ");
-				System.out.println(lista.dominioIgual(in.nextLine()));
-				System.out.println("Pressione enter para continuar...");
-				in.nextLine();
-				break;
-				
 			default:
 				System.out.println(menu.imprimeMenu("Item não pertence ao Menu, favor digitar Novamente"));
 				in.nextLine();
 			}
 		}while(escolha != 0);
 		System.out.println(menu.imprimeMenu("Programa Encerrado"));
-		
-		ManipXML.gravarXMLCliente(lista.getLista());
 
-		lista.geraHTML();
-		/*
-		List<Clientes>list = ManipXML.lerXMLCOM();
-		for (Iterator iter = list.iterator(); iter.hasNext();) {
-			Clientes element = (Clientes) iter.next();
-			System.out.println(element.toString() + "\n---");	
-		}
-		*/
+		ManipXML.gravarXMLPaciente(listaPac.getLista());
+		ManipXML.gravarXMLMedico(listaMed.getLista());
+		ManipXML.gravarXMLAtendimento(listaAte.getLista());
 	}
 }
