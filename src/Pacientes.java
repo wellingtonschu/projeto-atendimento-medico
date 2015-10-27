@@ -45,7 +45,7 @@ public class Pacientes {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CÃ³digo: ");
+		builder.append("Código: ");
 		builder.append(codigo);
 		builder.append(" | Nome: ");
 		builder.append(nome);

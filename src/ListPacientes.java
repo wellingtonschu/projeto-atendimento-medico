@@ -1,8 +1,3 @@
-import java.awt.Desktop;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,7 +94,7 @@ public class ListPacientes {
 			builder.append(lista.get(i).getNome());
 			builder.append(" | Fone: ");
 			builder.append(lista.get(i).getFone());
-			builder.append(" | ClassificaÃ§Ã£o: ");
+			builder.append(" | Classificação: ");
 			builder.append(lista.get(i).getClassificacao());
 			builder.append("\n");
 		}

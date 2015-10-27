@@ -1,8 +1,3 @@
-import java.awt.Desktop;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +31,7 @@ public class ListMedicos {
 	
 	public StringBuilder imprimir(){
 		StringBuilder builder = new StringBuilder();
-		builder.append(menu.imprimeMenu("Medicos Cadastrados"));
+		builder.append(menu.imprimeMenu("Médicos Cadastrados"));
 		for (int i = 0; i < lista.size(); i++) {
 			builder.append(lista.get(i).getCodigo());
 			builder.append(" - ");
@@ -61,7 +56,7 @@ public class ListMedicos {
 		if(verifica_medico != -1){
 			builder.append(lista.get(verifica_medico).getNome());
 		}else
-			builder.append("Valor NÃ£o Encontrado, favor tentar novamente..");
+			builder.append("Valor Não Encontrado, favor tentar novamente..");
 		return builder;
 	}
 	

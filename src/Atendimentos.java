@@ -42,21 +42,21 @@ public class Atendimentos {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CÃ³digo: ");
+		builder.append("Código: ");
 		builder.append(codigo);
-		builder.append("\nMÃ©dico | CÃ³digo: ");
+		builder.append("\nMédico | Código: ");
 		builder.append(listaMed.lista.get(codigo).getCodigo());
 		builder.append("   -   Nome: ");
 		builder.append(listaMed.lista.get(codigo).getNome());
 		builder.append("   -   Fone: ");
 		builder.append(listaMed.lista.get(codigo).getFone());
-		builder.append("\nPaciente | CÃ³digo: ");
+		builder.append("\nPaciente | Código: ");
 		builder.append(listaPac.lista.get(codigo).getCodigo());
 		builder.append("   -   Nome: ");
 		builder.append(listaPac.lista.get(codigo).getNome());
 		builder.append("   -   Fone: ");
 		builder.append(listaPac.lista.get(codigo).getFone());
-		builder.append("   -   ClassificaÃ§Ã£o: ");
+		builder.append("   -   Classificação: ");
 		builder.append(listaPac.lista.get(codigo).getClassificacao());
 		return builder.toString();
 	}

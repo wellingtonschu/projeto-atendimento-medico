@@ -16,7 +16,7 @@ public class Main {
 			System.out.println(menu.imprimeMenu("MENU"));
 			System.out.println("1 - Realizar Atendimento");
 			System.out.println("2 - Cadastrar novo Paciente");
-			System.out.println("3 - Cadastrar novo M√©dico");
+			System.out.println("3 - Cadastrar novo MÈdico");
 			System.out.println("4 - Mostrar Tudo");
 			System.out.println("0 - Sair do Programa");
 			System.out.print("\nValor escolhido: ");
@@ -28,14 +28,14 @@ public class Main {
 				ate = new Atendimentos();
 				System.out.println(menu.imprimeMenu("REALIZAR ATENDIMENTO"));
 
-				System.out.println("A seguir ser√° mostrado os m√©dicos cadastrados\nPressione enter para continuar...");
+				System.out.println("A seguir ser· mostrado os mÈdicos cadastrados\nPressione enter para continuar...");
 				in.nextLine();in.nextLine();
 				System.out.println(listaMed.imprimir());
-				System.out.print("\nDigite o c√≥digo do M√©dico que realizar√° o atendimento: ");
+				System.out.print("\nDigite o cÛdigo do MÈdico que realizar· o atendimento: ");
 				medico = in.nextInt();
 				System.out.println(menu.imprimeMenu("ATENDIMENTO REALIZADO"));
-				System.out.println("O paciente " + listaPac.lista.get(0).getNome() + " foi atendido pelo m√©dico " + listaMed.consultar(medico));
-				System.out.print("Digite o C√≥digo do Atendimento: ");
+				System.out.println("O paciente " + listaPac.lista.get(0).getNome() + " foi atendido pelo mÈdico " + listaMed.consultar(medico));
+				System.out.print("Digite o CÛdigo do Atendimento: ");
 				ate.setCodigo(in.nextInt());
 				ate.setCodigoMedico(medico);
 				ate.setCodigoPaciente(listaPac.lista.get(0).getCodigo());
@@ -49,7 +49,7 @@ public class Main {
 				int q3 = 0;
 				int q4 = 0;
 				System.out.println(menu.imprimeMenu("CADASTRAR NOVO PACIENTE"));
-				System.out.print("C√≥digo: ");
+				System.out.print("CÛdigo: ");
 				pac.setCodigo(in.nextInt());
 				in.nextLine();
 				System.out.print("Nome: ");
@@ -57,13 +57,13 @@ public class Main {
 				System.out.print("Telefone: ");
 				pac.setFone(in.nextLine());
 				
-				System.out.print("H√° alguma Fratura? (1 - Sim, 0 - N√£o)\nR: ");
+				System.out.print("H· alguma Fratura? (1 - Sim, 0 - N„o)\nR: ");
 				q1 = in.nextInt();
-				System.out.print("H√° alguma Hemorragia? (1 - Sim, 0 - N√£o)\nR: ");
+				System.out.print("H· alguma Hemorragia? (1 - Sim, 0 - N„o)\nR: ");
 				q2 = in.nextInt();
-				System.out.print("H√° alguma Queimadura? (1 - Sim, 0 - N√£o)\nR: ");
+				System.out.print("H· alguma Queimadura? (1 - Sim, 0 - N„o)\nR: ");
 				q3 = in.nextInt();
-				System.out.print("Houve Desmaio? (1 - Sim, 0 - N√£o)\nR: ");
+				System.out.print("Houve Desmaio? (1 - Sim, 0 - N„o)\nR: ");
 				q4 = in.nextInt();
 				System.out.println((q1+q2+q3+q4));
 				if((q1 + q2 + q3 + q4) == 4)
@@ -81,8 +81,8 @@ public class Main {
 				break;
 			case 3:
 				med = new Medicos();
-				System.out.println(menu.imprimeMenu("CADASTRAR NOVO M√âDICO"));
-				System.out.print("C√≥digo: ");
+				System.out.println(menu.imprimeMenu("CADASTRAR NOVO M…DICO"));
+				System.out.print("CÛdigo: ");
 				med.setCodigo(in.nextInt());
 				in.nextLine();
 				System.out.print("Nome: ");
@@ -103,7 +103,7 @@ public class Main {
 				in.nextLine();
 				break;
 			default:
-				System.out.println(menu.imprimeMenu("Item n√£o pertence ao Menu, favor digitar Novamente"));
+				System.out.println(menu.imprimeMenu("Item n„o pertence ao Menu, favor digitar Novamente"));
 				in.nextLine();
 			}
 		}while(escolha != 0);

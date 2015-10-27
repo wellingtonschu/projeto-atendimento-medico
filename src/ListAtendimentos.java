@@ -1,8 +1,3 @@
-import java.awt.Desktop;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +32,7 @@ public class ListAtendimentos {
 		for (int i = 0; i < lista.size(); i++) {
 			builder.append(lista.get(i).getCodigo());
 			builder.append(" - ");
-			builder.append("Nome do MÃ©dico: ");
+			builder.append("Nome do Médico: ");
 			for (int j = 0; j < lista.size(); j++) {
 				for (int j2 = 0; j2 < listaMed.lista.size(); j2++) {
 					if(listaMed.lista.get(j2).getCodigo() == lista.get(j).getCodigoMedico())
