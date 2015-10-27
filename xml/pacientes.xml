@@ -1,2 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Pacientes><titulo>Cadastro de Pacientes</titulo><data>26/10/2015 21:14:57</data><pacientes codigo="123"><nome>Rodrigo Curvello</nome><fone>1234-4321</fone></pacientes></Pacientes>
+<Pacientes><titulo>Cadastro de Pacientes</titulo><data>26/10/2015 21:14:57</data><pacientes codigo="123"><nome>Rodrigo Curvello</nome><fone>1234-4321</fone>
+	<classificacao>Vermelho</classificacao></pacientes></Pacientes>
