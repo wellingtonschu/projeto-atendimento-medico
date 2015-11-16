@@ -33,18 +33,15 @@ public class ListAtendimentos {
 			builder.append(lista.get(i).getCodigo());
 			builder.append(" - ");
 			builder.append("Nome do Médico: ");
-			for (int j = 0; j < lista.size(); j++) {
-				for (int j2 = 0; j2 < listaMed.lista.size(); j2++) {
-					if(listaMed.lista.get(j2).getCodigo() == lista.get(j).getCodigoMedico())
-						builder.append(listaMed.lista.get(j2).getNome());
-				}
+			for (int j2 = 0; j2 < listaMed.lista.size(); j2++) {
+				if(listaMed.lista.get(j2).getCodigo() == lista.get(i).getCodigoMedico())
+					builder.append(listaMed.lista.get(j2).getNome());
 			}
+			
 			builder.append(" | Nome do Paciente: ");
-			for (int j = 0; j < lista.size(); j++) {
-				for (int j2 = 0; j2 < listaMed.lista.size(); j2++) {
-					if(listaPac.lista.get(j2).getCodigo() == lista.get(j).getCodigoPaciente())
-						builder.append(listaPac.lista.get(j2).getNome());
-				}
+			for (int j2 = 0; j2 < listaPac.lista.size(); j2++) {
+				if(listaPac.lista.get(j2).getCodigo() == lista.get(i).getCodigoPaciente())
+					builder.append(listaPac.lista.get(j2).getNome());
 			}
 			builder.append("\n");
 		}

@@ -7,4 +7,13 @@ public class Menus {
 		builder.append(" --------\n");
 		return builder;
 	}
+	public static void esperar(){
+		try {
+			for (int i = 0; i < 5; i++) {
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }

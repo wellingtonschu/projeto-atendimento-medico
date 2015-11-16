@@ -10,6 +10,10 @@ public class ListPacientes {
 		lista = list;
 	}
 	
+	public void setLista(List<Pacientes> lista){
+		this.lista = lista;
+	}	
+	
 	public void inserir(Pacientes cli){
 		int verifica = 0;
 		for(int x = 0; x < lista.size() ; x++){

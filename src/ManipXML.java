@@ -136,7 +136,7 @@ public class ManipXML{
 			Element codigoMedico = new Element("codigoMedico");
 			codigoMedico.setText(lista.get(x).getCodigoMedicoText());
 
-			Element codigoPaciente = new Element("fone");
+			Element codigoPaciente = new Element("codigoPaciente");
 			codigoPaciente.setText(lista.get(x).getCodigoPacienteText());
 						
 			atendimento.addContent(codigoMedico);
