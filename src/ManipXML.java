@@ -45,10 +45,14 @@ public class ManipXML{
 			
 			Element classificacao = new Element("classificacao");
 			classificacao.setText(lista.get(x).getClassificacao());
+			
+			Element status = new Element("status");
+			status.setText(lista.get(x).getStatus());
 						
 			paciente.addContent(nome);
 			paciente.addContent(fone);
 			paciente.addContent(classificacao);
+			paciente.addContent(status);
 			config.addContent(paciente);			
 		}
 
@@ -102,7 +106,7 @@ public class ManipXML{
 		XMLOutputter xout = new XMLOutputter();	
 		try {
 			//criando o arquivo de saida
-			BufferedWriter arquivo = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(LOCALHOST +  "clientes" + ".xml"),"UTF-8"));
+			BufferedWriter arquivo = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(LOCALHOST +  "medicos" + ".xml"),"UTF-8"));
 			//imprimindo o xml no arquivo
 			xout.output(documento, arquivo);
 			return true;
@@ -177,6 +181,7 @@ public class ManipXML{
 			pac.setNome(element.getChildText("nome"));
 			pac.setFone(element.getChildText("fone"));
 			pac.setClassificacao((element.getChildText("classificacao")));
+			pac.setStatus((element.getChildText("status")));
 			listaPac.add(pac);
 		}
 		return listaPac;

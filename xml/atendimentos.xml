@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Atendimentos><titulo>Cadastro de Atendimentos</titulo><data>16/11/2015 19:15:39</data></Atendimentos>
+<Atendimentos><titulo>Cadastro de Atendimentos</titulo><data>17/11/2015 10:07:06</data><atendimento codigo="1"><codigoMedico>1</codigoMedico><codigoPaciente>2</codigoPaciente></atendimento><atendimento codigo="2"><codigoMedico>1</codigoMedico><codigoPaciente>1</codigoPaciente></atendimento></Atendimentos>

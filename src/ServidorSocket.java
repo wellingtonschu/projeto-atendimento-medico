@@ -64,19 +64,32 @@ public class ServidorSocket implements Serializable{
 				case 1:
 					System.out.println("Monstrando Lista de Médicos por 5 segundos...");
 					saida.println(listaMed.imprimir());
+					
+					
 					String medico = entrada.readLine();
 					
-					System.out.println("O paciente " + listaPac.lista.get(0).getNome() + " foi atendido pelo médico " + listaMed.consultar(Integer.valueOf(medico)));
-					Atendimentos ate = new Atendimentos();
-					ate.setCodigo(Integer.valueOf(entrada.readLine()));
+					
+					Atendimentos ate = new Atendimentos();;
 					for (int i = 0; i < listaMed.lista.size(); i++) {
 						if(listaMed.lista.get(i).getCodigo() == Integer.valueOf(medico))
 							ate.setCodigoMedico(listaMed.lista.get(i).getCodigo());
 					}
-					ate.setCodigoPaciente(listaPac.lista.get(0).getCodigo());
-					
+					for (int i = 0; i < listaPac.lista.size(); i++) {
+						if(listaPac.lista.get(i).getStatus().equals("1")){
+							ate.setCodigoPaciente(listaPac.lista.get(i).getCodigo());
+							System.out.println("O paciente " + listaPac.lista.get(i).getNome() + " foi atendido pelo médico " + listaMed.consultar(Integer.valueOf(medico)));
+							saida.println("O paciente " + listaPac.lista.get(i).getNome() + " foi atendido pelo médico " + listaMed.consultar(Integer.valueOf(medico)));
+							break;
+						}
+					}
+					ate.setCodigo(Integer.valueOf(entrada.readLine()));
 					listaAte.inserir(ate);
-					//listaPac.deletar(listaPac.lista.get(0).getCodigo());
+					for (int i = 0; i < listaPac.lista.size(); i++) {
+						if(listaPac.lista.get(i).getStatus().equals("1")){
+							listaPac.lista.get(i).setStatus("0");
+							break;
+						}
+					}
 					break;
 				case 2:
 					Pacientes pac = (Pacientes) recebeObj.readObject();
@@ -90,6 +103,7 @@ public class ServidorSocket implements Serializable{
 					Medicos med = (Medicos) recebeObj.readObject();
 					if (med != null) {
 						listaMed.inserir(med);
+						System.out.println(listaMed.imprimir());
 					}			
 					System.out.println("Novo Médico Cadastrado");
 					saida.println("Médico Cadastrado com Sucesso!");

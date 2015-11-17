@@ -6,15 +6,17 @@ public class Pacientes implements Serializable{
 	private String nome;
 	private String fone;
 	private String classificacao;
+	private String status;
 	
 	public Pacientes(){
 		
 	}
-	public Pacientes(int codigo, String nome, String fone, String classificacao){
+	public Pacientes(int codigo, String nome, String fone, String classificacao, String status){
 		setCodigo(codigo);
 		setNome(nome);
 		setFone(fone);
 		setClassificacao(classificacao);
+		setStatus(status);
 	}
 	public int getCodigo() {
 		return codigo;
@@ -24,6 +26,9 @@ public class Pacientes implements Serializable{
 	}
 	public String getNome() {
 		return nome;
+	}
+	public String getStatus(){
+		return status;
 	}
 	public String getClassificacao() {
 		return classificacao;
@@ -44,6 +49,10 @@ public class Pacientes implements Serializable{
 		if (nome.length() > 0)
 			this.classificacao = classificacao;
 	}
+	public void setStatus(String status){
+		if(status.equals("1") || status.equals("0"))
+			this.status = status;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -55,6 +64,8 @@ public class Pacientes implements Serializable{
 		builder.append(fone);
 		builder.append(" | Classificação: ");
 		builder.append(classificacao);
+		builder.append(" | Status: ");
+		builder.append(status);
 		return builder.toString();
 	}
 	

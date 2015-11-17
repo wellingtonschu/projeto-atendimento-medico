@@ -1,5 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Medicos>
-	<titulo>Cadastro de Medicos</titulo>
-	<data>26/10/2015 21:14:57</data>
-</Medicos>
+<Medicos><titulo>Cadastro de Medicos</titulo><data>17/11/2015 10:07:06</data><medico codigo="1"><nome>Alex</nome><fone>47 5555-5555</fone></medico></Medicos>

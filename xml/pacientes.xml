@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Pacientes><titulo>Cadastro de Pacientes</titulo><data>16/11/2015 19:15:39</data></Pacientes>
+<Pacientes><titulo>Cadastro de Pacientes</titulo><data>17/11/2015 10:07:06</data><paciente codigo="2"><nome>Wellington Schutz</nome><fone>47 666-66666</fone><classificacao>Vermelho</classificacao><status>0</status></paciente><paciente codigo="1"><nome>Rodrigo Becker Probst</nome><fone>47 8888-8888</fone><classificacao>Azul</classificacao><status>0</status></paciente></Pacientes>

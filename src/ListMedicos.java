@@ -10,9 +10,8 @@ public class ListMedicos {
 		lista = list;
 	}
 	
-	public void inserir(Medicos cli){
-		if(verifica_duplicidade(cli.getNome()))
-			lista.add(cli);
+	public void inserir(Medicos med){
+		lista.add(med);
 	}
 	
 	public void deletar(int cod_medico){
@@ -20,13 +19,6 @@ public class ListMedicos {
 			if(lista.get(i).getCodigo() == cod_medico)
 				lista.remove(i);
 		}
-	}
-	
-	public boolean verifica_duplicidade(String texto){
-		for (int i = 0; i < lista.size(); i++)
-			if(lista.get(i).getNome().equals(texto))
-				return false;
-		return true;
 	}
 	
 	public StringBuilder imprimir(){

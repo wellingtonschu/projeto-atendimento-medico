@@ -63,12 +63,14 @@ public class ListPacientes {
 		pac.setNome(lista.get(lista.size()-1).getNome());
 		pac.setFone(lista.get(lista.size()-1).getFone());
 		pac.setClassificacao(lista.get(lista.size()-1).getClassificacao());
+		pac.setStatus(lista.get(lista.size()-1).getStatus());
 		lista.add(pac);
 		alteraRapido(x);
 		lista.get(x).setCodigo(cli.getCodigo());
 		lista.get(x).setNome(cli.getNome());
 		lista.get(x).setFone(cli.getFone());
 		lista.get(x).setClassificacao(cli.getClassificacao());
+		lista.get(x).setStatus(cli.getStatus());
 	}
 	public void alteraRapido(int ponto_de_parada){
 		
@@ -77,6 +79,7 @@ public class ListPacientes {
 			lista.get(i).setNome(lista.get(i-1).getNome());
 			lista.get(i).setFone(lista.get(i-1).getFone());
 			lista.get(i).setClassificacao(lista.get(i-1).getClassificacao());
+			lista.get(i).setStatus(lista.get(i-1).getStatus());
 		}
 	}
 	
@@ -92,15 +95,19 @@ public class ListPacientes {
 		StringBuilder builder = new StringBuilder();
 		builder.append(menu.imprimeMenu("Pacientes Cadastrados"));
 		for (int i = 0; i < lista.size(); i++) {
-			builder.append(lista.get(i).getCodigo());
-			builder.append(" - ");
-			builder.append("Nome: ");
-			builder.append(lista.get(i).getNome());
-			builder.append(" | Fone: ");
-			builder.append(lista.get(i).getFone());
-			builder.append(" | Classificação: ");
-			builder.append(lista.get(i).getClassificacao());
-			builder.append("\n");
+			if("1".equals(lista.get(i).getStatus())){
+				builder.append(lista.get(i).getCodigo());
+				builder.append(" - ");
+				builder.append("Nome: ");
+				builder.append(lista.get(i).getNome());
+				builder.append(" | Fone: ");
+				builder.append(lista.get(i).getFone());
+				builder.append(" | Classificação: ");
+				builder.append(lista.get(i).getClassificacao());
+				builder.append(" | Status: ");
+				builder.append(lista.get(i).getStatus());
+				builder.append("\n");
+			}
 		}
 		return builder;
 	}

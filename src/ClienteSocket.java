@@ -36,7 +36,7 @@ public class ClienteSocket implements Serializable{
 		
 		try{
 			// Cria o socket com os parâmetros
-			cliente = new Socket("127.0.0.1",7000);
+			cliente = new Socket("localhost",7000);
 			String texto1 = String.valueOf(cliente.getInetAddress());
 			texto1 = texto1.replaceAll("/","");
 			System.out.println(texto1);
@@ -70,10 +70,16 @@ public class ClienteSocket implements Serializable{
 					
 					System.out.print("\nDigite o código do Médico que realizará o atendimento: ");
 					saida.println(in.nextInt());
-
+					
+					System.out.println(dados.readLine());
+					menu.esperar();
+					
+					
+					
 					System.out.println(menu.imprimeMenu("ATENDIMENTO REALIZADO"));
 					System.out.print("Digite um Código para o Atendimento: ");
 					saida.println(in.nextInt());
+					
 					
 					break;
 				case 2:
@@ -109,12 +115,16 @@ public class ClienteSocket implements Serializable{
 					if((q1 + q2 + q3 + q4) == 0)
 						pac.setClassificacao("Azul");
 					
+					//Define Status como ativo (em espera para atendimento)
+					pac.setStatus("1");
+					
 					enviaObj.writeObject(pac);       
 			        System.out.println(dados.readLine());
 					menu.esperar();
 					break;
 				case 3:
 					saida.println(escolha);
+					enviaObj = new ObjectOutputStream(saida);
 					med = new Medicos();
 					System.out.println(menu.imprimeMenu("CADASTRAR NOVO MÉDICO"));
 					System.out.print("Código: ");
